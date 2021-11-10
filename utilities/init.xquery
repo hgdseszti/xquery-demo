@@ -7,7 +7,7 @@ declare namespace file = "http://expath.org/ns/file";
 
 declare variable $kd-utilities:dataDir := "../data/";
 
-declare function kd-utilities:get-data() as array(*)
+declare function kd-utilities:get-releases() as array(*)
 {
     kd-utilities:get-all()
 };
