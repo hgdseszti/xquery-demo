@@ -1,8 +1,13 @@
 # xquery-demo
 Demo queries made to the MusicBrainz database via XQuery
 
-[Dolgozat összefoglalója elérhető itt](./xquery_demo.md)
+**[Summary in Hungarian]**  
+[A dolgozat elérhető itt](./xquery_demo.md)
 
 # Running the queries...
-Execute the supplied make file!
-Or invoke BaseX directly on the main XQuery query.
+Invoke BaseX directly on the main XQuery query.
+```bash
+pwd # **/xquery-demo
+cd atomic
+basex songs_tpl.xquery 
+```

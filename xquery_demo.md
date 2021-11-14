@@ -7,8 +7,7 @@
 2. [Fájlrendszer](#fájlrendszer)
 3. [Feladatok](#feladatok)
 
-
-10 feladaton keresztül bemutatni az XQuery lehetőségeit.  
+ 
 ## Tartalom:   
 * 3 atomi érték visszadása (JSON)
 * 4 lekérdezés, ami standalone `XML` dokumentumot ad vissza, az XML-eket validálni kell
@@ -17,8 +16,7 @@
 
 ## Fájlrendszer  
 `. = $pwd`   
-* ./xquery_demo.md -- a dolgozat megoldással
-* ./make & ./make.bat -- dolgozat szkriptjeinek lefuttatása
+* ./xquery_demo.md -- a dolgozat megoldásokkal és kimenetekkel
 * ./xml -- mappa az xml-s feladatok számára
 * ./json --  mappa az json-s feladatok számára
 * ./html5 --  mappa az html5 feladat számára
@@ -43,7 +41,7 @@ cd atomic
 basex songs_tpl.xquery 
 ```
 
-1. **Feladat:**  A _MusicBrainz API_ szerint King Diamond összes hivatalos albunának összesen 94 kiadása van. Igazoljuk ezt egy XQuery lekérdezéssel!</br>
+1. **Feladat:**  A _MusicBrainz API_ szerint King Diamond összes hivatalos albumának összesen 94 kiadása van. Igazoljuk ezt egy XQuery lekérdezéssel!</br>
 Típus: **JSON**
 ```xquery
 xquery version "3.1";
@@ -142,7 +140,7 @@ array:size($dates)
 8
 ```
 
-4. **Feladat:** Állítsuk elő azt a JSON dokumentumot, ami tartalmazza a kiadókat. A kiadókhoz adjuk mega kiadott albumok címét, illetve kiadási dátumát. Rendezzük a kiadókon belül az albumokat kiadási dátumok szerint növekvő sorrendben!</br>
+4. **Feladat:** Állítsuk elő azt a JSON dokumentumot, ami tartalmazza a kiadókat. A kiadókhoz adjuk meg a kiadott albumok címét, illetve kiadási dátumát. Rendezzük a kiadókon belül az albumokat kiadási dátumok szerint növekvő sorrendben!</br>
 Típus: **JSON**
 ```xquery
 xquery version "3.1";
@@ -621,7 +619,8 @@ map:entry("publishers", array:join(
 ```
 
 5. **Feladat:**  </br>
-Típus: **JSON** Készítsük el azt a JSON dokumentumot, amit tartalmazza a 3 legnépszerűbb országot, ahol a legtöbb kiadás történt. Az országok mellé adjuk meg, hogy hány kiadással rendelkeznek, illetve melyik album a legnépszerűbb az adott országban és azt hányszor adták ki az adott országban!
+Készítsük el azt a JSON dokumentumot, amit tartalmazza a 3 legnépszerűbb országot, ahol a legtöbb kiadás történt. Az országok mellé adjuk meg, hogy hány kiadással rendelkeznek, illetve melyik album a legnépszerűbb az adott országban és azt hányszor adták ki az adott országban!  
+Típus: **JSON**  
 ```xquery
 xquery version "3.1";
 
@@ -733,7 +732,7 @@ Típus: **XML**
 ```xquery
 ```
 **Válasz kiemnet**
-```json
+```xml
 
 ```
 
@@ -742,7 +741,7 @@ Típus:  **XML**
 ```xquery
 ```
 **Válasz kiemnet**
-```json
+```xml
 
 ```
 
@@ -751,7 +750,7 @@ Típus: **XML**
 ```xquery
 ```
 **Válasz kiemnet**
-```json
+```xml
 
 ```
 
@@ -760,7 +759,7 @@ Típus: **XML**
 ```xquery
 ```
 **Válasz kiemnet**
-```json
+```xml
 
 ```
 
@@ -769,6 +768,6 @@ Típus: **HTML5**
 ```xquery
 ```
 **Válasz kiemnet**
-```json
+```html5
 
 ```
