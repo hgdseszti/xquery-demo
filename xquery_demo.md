@@ -727,7 +727,7 @@ return $resultDocument
 }
 ```
 
-6. **Feladat:** </br>
+6. **Feladat:** Készítsük el _King Diamond_ diszkográfiájának XML reprezentációját! A diszkográfia albumonként tartalmazza a szerzőt, címét, zenedarabjainak címét és játékidejét percben, a hanghordozó típusát, illetve a kiadási évét. Ha egy albumnnak több kiadása is van, akkor a legelső kiadását tegyük a diszkográfiába! </br>
 Típus: **XML**
 ```xquery
 ```
