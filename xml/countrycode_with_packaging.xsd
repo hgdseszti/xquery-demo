@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="countryCodes">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element  name="countryCode"
+                             type="countryCodeType"
+                             minOccurs="1"
+                             maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:complexType name="countryCodeType">
+        <xs:sequence>
+            <xs:element name="packaging"
+                        type="packagingType"
+                        minOccurs="1"
+                        maxOccurs="unbounded"
+                />           
+        </xs:sequence>
+        <xs:attribute name="value" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:length value="2"/>
+                    <xs:pattern value="[A-Z]+"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="uniq-packagings" type="xs:unsignedInt" use="required"/>
+    </xs:complexType>
+    
+    <xs:complexType name="packagingType">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="release-count" type="xs:unsignedInt" use="required"/>
+    </xs:complexType>
+    
+</xs:schema>
