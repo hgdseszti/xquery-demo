@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="europe">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="country" minOccurs="1" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:attribute name="name" type="nameType" use="required"/>
+                        <xs:attribute name="cca2" type="cca2Type" use="required"/>
+                        <xs:attribute name="distanceFromHungary" type="xs:integer" use="required"/>
+                        <xs:attribute name="closest" type="xs:boolean" use="optional"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>    
+    
+    
+    <xs:simpleType name="nameType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="(([a-zA-Z])+\s*)+"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="cca2Type">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z][A-Z]"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+    
+</xs:schema>
