@@ -53,5 +53,9 @@ $resultDocument :=
                 </album>
         }
     </albums>
-</discography>             
-return validate:xsd-report($resultDocument, "simple_discography.xsd")
+</discography>         ,    
+$validationMessage := validate:xsd-report($resultDocument, "simple_discography.xsd")
+return 
+    if (fn:contains($validationMessage, "invalid"))
+    then $validationMessage
+    else $resultDocument
