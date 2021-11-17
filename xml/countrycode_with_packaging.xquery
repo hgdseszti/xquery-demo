@@ -10,6 +10,7 @@ declare option output:indent "yes";
 
 declare variable $releases := kd-utilities:get-releases();
 
+
 let $result := 
         array {
             for $release allowing empty in $releases?*

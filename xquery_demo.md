@@ -619,7 +619,7 @@ map:entry("publishers", array:join(
 ```
 
 5. **Feladat:**  </br>
-Készítsük el azt a JSON dokumentumot, amit tartalmazza a 3 legnépszerűbb országot, ahol a legtöbb kiadás történt. Az országok mellé adjuk meg, hogy hány kiadással rendelkeznek, illetve melyik album a legnépszerűbb az adott országban és azt hányszor adták ki az adott országban!  
+Készítsük el azt a JSON dokumentumot, amit tartalmazza azt a 3 legnépszerűbb országot, ahol a legtöbb kiadás történt. Az országok mellé adjuk meg, hogy hány kiadással rendelkeznek, illetve melyik album a legnépszerűbb az adott országban és azt hányszor adták ki az adott országban!  
 Típus: **JSON**  
 ```xquery
 xquery version "3.1";
@@ -727,11 +727,75 @@ return $resultDocument
 }
 ```
 
-6. **Feladat:** Készítsük el _King Diamond_ diszkográfiájának XML reprezentációját! A diszkográfia albumonként tartalmazza a címét, zenedarabjainak címét és játékidejét percben, a hanghordozó típusát, illetve a kiadási évét. Ha egy albumnnak több kiadása is van, akkor a legelső kiadását tegyük a diszkográfiába! </br>
+6. **Feladat:** Készítsük el _King Diamond_ diszkográfiájának XML reprezentációját! A diszkográfia albumonként tartalmazza a címét, zenedarabjainak címét és játékidejét percben, illetve a kiadási évét. Ha egy albumnnak több kiadása is van, akkor a legelső kiadását tegyük a diszkográfiába! </br>
 Típus: **XML**
 ```xquery
+xquery version "3.1";
+
+import module namespace kd-utilities = "http://kingdiamond.util" at "../utilities/init.xquery";declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
+
+declare namespace array = "http://www.w3.org/2005/xpath-functions/array";
+declare namespace map = "http://www.w3.org/2005/xpath-functions/map";
+declare namespace validate = "http://basex.org/modules/validate";
+
+declare option output:method "xml";
+declare option output:indent "yes";
+
+declare %private function local:mergeMedia($media as array(*), $index as xs:integer) as array(*)
+{
+    if (array:size($media) = $index)
+    then array:get($media, $index)?tracks
+    else array:join((array:get($media, $index)?tracks, local:mergeMedia($media, $index + 1))) 
+};
+
+declare variable $releases := kd-utilities:get-releases();
+
+let $firstReleasesWithId :=  array { for $release in $releases?*
+                             group by $albumTitle := fn:replace($release?title, '"+|“+|”+|’+|…+|–+', '')
+                             let $releaseDate := fn:min(for $date in $release?date where $date != "" return array { xs:integer(fn:substring($date, 1,4)) })
+                             return map {
+                                    "name" : $albumTitle,
+                                    "release-date" : $releaseDate,
+                                    "id" : 
+                                        array:get( array {
+                                            for $rel in $releases?*
+                                            where $rel?date != "" and xs:integer(fn:substring($rel?date,1,4)) = $releaseDate
+                                            return $rel?id 
+                                          }
+                                        ,1)
+                             }},
+                             
+$resultDocument :=
+<discography>
+    <albums count="{array:size($firstReleasesWithId)}">
+        {
+            for $album in $firstReleasesWithId?*
+                for $r in $releases?*
+                where $r?id = $album?id
+                return 
+                <album title="{$album?name}" release-date="{$album?release-date}">
+                    <songs>
+                        {
+                            for $song in local:mergeMedia($r?media, 1)?*
+                            let $duration := if (fn:exists($song?length)) then $song?length else 0.0
+                            return 
+                                <song name="{$song?title}" duration="{fn:round(xs:double($duration) div 1000 div 60,2)}" />
+                        }
+                    </songs>
+                </album>
+        }
+    </albums>
+</discography>         ,    
+$validationMessage := validate:xsd-report($resultDocument, "simple_discography.xsd")
+return 
+    if (fn:contains($validationMessage, "invalid"))
+    then $validationMessage
+    else $resultDocument
 ```
 **Válasz kiemnet**
+
+Kapcsolódó [XML Séma](./xml/simple_discography.xsd)
+
 ```xml
 <discography>
   <albums count="27">
@@ -944,29 +1008,29 @@ Típus: **XML**
     </album>
     <album title="Dreams of Horror" release-date="2014">
       <songs>
-        <song name="The Candle" duration=""/>
-        <song name="Dressed in White" duration=""/>
-        <song name="The Family Ghost" duration=""/>
-        <song name="Black Horsemen" duration=""/>
-        <song name="Welcome Home" duration=""/>
-        <song name="The Invisible Guests" duration=""/>
-        <song name="At the Graves" duration=""/>
-        <song name="Sleepless Nights" duration=""/>
-        <song name="Let It Be Done" duration=""/>
-        <song name="Eye of the Witch" duration=""/>
-        <song name="Insanity" duration=""/>
-        <song name="Dreams" duration=""/>
-        <song name="Shapes of Black" duration=""/>
-        <song name="The Spider’s Lullabye" duration=""/>
-        <song name="Waiting" duration=""/>
-        <song name="Heads on the Wall" duration=""/>
-        <song name="Voodoo" duration=""/>
-        <song name="Black Devil" duration=""/>
-        <song name="Help!!!" duration=""/>
-        <song name="Spirits" duration=""/>
-        <song name="Blue Eyes" duration=""/>
-        <song name="The Puppet Master" duration=""/>
-        <song name="Never Ending Hill" duration=""/>
+        <song name="The Candle" duration="0"/>
+        <song name="Dressed in White" duration="0"/>
+        <song name="The Family Ghost" duration="0"/>
+        <song name="Black Horsemen" duration="0"/>
+        <song name="Welcome Home" duration="0"/>
+        <song name="The Invisible Guests" duration="0"/>
+        <song name="At the Graves" duration="0"/>
+        <song name="Sleepless Nights" duration="0"/>
+        <song name="Let It Be Done" duration="0"/>
+        <song name="Eye of the Witch" duration="0"/>
+        <song name="Insanity" duration="0"/>
+        <song name="Dreams" duration="0"/>
+        <song name="Shapes of Black" duration="0"/>
+        <song name="The Spider’s Lullabye" duration="0"/>
+        <song name="Waiting" duration="0"/>
+        <song name="Heads on the Wall" duration="0"/>
+        <song name="Voodoo" duration="0"/>
+        <song name="Black Devil" duration="0"/>
+        <song name="Help!!!" duration="0"/>
+        <song name="Spirits" duration="0"/>
+        <song name="Blue Eyes" duration="0"/>
+        <song name="The Puppet Master" duration="0"/>
+        <song name="Never Ending Hill" duration="0"/>
       </songs>
     </album>
     <album title="The Puppet Master" release-date="2003">
@@ -1261,16 +1325,218 @@ Típus: **XML**
 </discography>
 ```
 
-7. **Feladat:** </br>
+7. **Feladat:** Készítsük el azt az XML dokumentumot, ami tartalmazza országkódonként, azonbelül csomagolásonként azon kiadások számát amelyek rendelkeznek albumborítóval! Az országokhoz adjuk meg az egyedi csomagolástípusok számát.</br>
+
+Kapcsolódó [XML Séma](./xml/countrycode_with_packaging.xsd)
+
 Típus:  **XML**
 ```xquery
+xquery version "3.1";
+
+import module namespace kd-utilities = "http://kingdiamond.util" at "../utilities/init.xquery";
+declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
+declare namespace array = "http://www.w3.org/2005/xpath-functions/array";
+declare namespace validate = "http://basex.org/modules/validate";
+
+declare option output:method "xml";
+declare option output:indent "yes";
+
+declare variable $releases := kd-utilities:get-releases();
+
+let $result := 
+        array {
+            for $release allowing empty in $releases?*
+            where $release?cover-art-archive?front = true()
+            group by $country := $release?country,
+                     $package := $release?packaging
+            order by $country, $package
+            return map {
+                "countryCode" : $country,
+                "packaging" : if (fn:boolean($package)) then $package else "Unknown",
+                "numberOfReleases": count($release)               
+            } 
+        
+        },
+$resultDocument :=
+<countryCodes>
+    {
+        for $entry in $result?*
+        group by $countryCode := $entry?countryCode        
+        let $count := fn:count($entry?packaging)
+        return 
+            <countryCode value="{$countryCode}" uniq-packagings="{$count}">
+                {
+                    for $p at $index in $entry?packaging
+                    return
+                        <packaging name="{$p}" release-count="{$entry?numberOfReleases[$index]}"/>
+                }
+            </countryCode>
+    }
+</countryCodes>,
+$validationMessage := validate:xsd-report($resultDocument, "countrycode_with_packaging.xsd")
+return
+    if (fn:contains($validationMessage, "invalid"))
+    then $validationMessage
+    else $resultDocument
+    
 ```
 **Válasz kiemnet**
 ```xml
-
+<countryCodes>
+  <countryCode value="DE" uniq-packagings="3">
+    <packaging name="Unknown" release-count="1"/>
+    <packaging name="Digipak" release-count="4"/>
+    <packaging name="Jewel Case" release-count="6"/>
+  </countryCode>
+  <countryCode value="DK" uniq-packagings="1">
+    <packaging name="Unknown" release-count="1"/>
+  </countryCode>
+  <countryCode value="FR" uniq-packagings="1">
+    <packaging name="Digipak" release-count="1"/>
+  </countryCode>
+  <countryCode value="JP" uniq-packagings="1">
+    <packaging name="Unknown" release-count="2"/>
+  </countryCode>
+  <countryCode value="NL" uniq-packagings="1">
+    <packaging name="Jewel Case" release-count="1"/>
+  </countryCode>
+  <countryCode value="RU" uniq-packagings="1">
+    <packaging name="Unknown" release-count="1"/>
+  </countryCode>
+  <countryCode value="US" uniq-packagings="3">
+    <packaging name="Unknown" release-count="1"/>
+    <packaging name="Digipak" release-count="5"/>
+    <packaging name="Jewel Case" release-count="7"/>
+  </countryCode>
+  <countryCode value="XE" uniq-packagings="5">
+    <packaging name="Unknown" release-count="1"/>
+    <packaging name="Cardboard/Paper Sleeve" release-count="1"/>
+    <packaging name="Digibook" release-count="1"/>
+    <packaging name="Gatefold Cover" release-count="1"/>
+    <packaging name="Jewel Case" release-count="2"/>
+  </countryCode>
+  <countryCode value="XW" uniq-packagings="2">
+    <packaging name="Digipak" release-count="1"/>
+    <packaging name="None" release-count="4"/>
+  </countryCode>
+</countryCodes>
 ```
 
-8. **Feladat:** </br>
+8. **Feladat:** Tekintve azokat az országokat, ahol a __*The Graveyard*__ című album eddig ki lett adva, készítsük el azt az XML dokumentumot, ami tartalmazza az összes európai országot csökkenő sorrendben az alapján, hogy az adott ország milyen messze van Magyarországtól! (Hanyadrendű szomszédja). Jelöljük meg azt az országo(ka)t egy `xs:boolean` típusú XML attribútummal, ahonnan a leggyorsabban juthatott el az album Magyarországra! A válaszhoz használjuk fel a `restcountries.com` WebAPI szolgáltatását!</br>
+
+Kapcsolódó [XML Séma](./xml/the_graveyard.xsd)
+
+Típus: **XML**
+```xquery
+xquery version "3.1";
+
+import module namespace kd-utilities = "http://kingdiamond.util" at "../utilities/init.xquery";
+declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
+declare namespace array = "http://www.w3.org/2005/xpath-functions/array";
+declare namespace validate = "http://basex.org/modules/validate";
+
+declare option output:method "xml";
+declare option output:indent "yes";
+
+declare function local:get-countries() as array(*)
+{
+   fn:json-doc("https://restcountries.com/v3.1/all")       
+};
+
+declare function local:get-distance-from-hungary($cca3Borders as array(*), $depth as xs:integer) as xs:integer
+{
+    if ($depth ge 10 or array:size($cca3Borders) eq 0)
+    then 
+        if (array:size($cca3Borders) eq 0) then 999 else -1000
+    else 
+        let $neighbour :=  array { $cca3Borders[. = "HUN"] } 
+        return if (array:size($neighbour) > 0)
+               then 1
+               else 
+                     array {
+                         for $cca3 in $cca3Borders
+                         let $nextNeighbours := array {
+                            for $next in $europeanCountries?*
+                            where $next?cca3 = $cca3
+                            return $next?neighbours }
+                            
+                         return 1 + local:get-distance-from-hungary($nextNeighbours, $depth + 1)
+                     }                 
+};
+
+declare variable $releases := kd-utilities:get-releases();
+declare variable $graveyard := "The Graveyard";
+declare variable $countries := local:get-countries();
+declare variable $europeanCountries :=  array {
+        for $country in $countries?*
+        where $country?region = "Europe" and $country?independent = true()
+        return map {
+            "country": $country?cca2,
+            "cca3" : $country?cca3,
+            "name" : $country?name?common,
+            "neighbours": if (fn:exists($country?borders)) then $country?borders else array:join(())
+        }
+    };
+
+let $releaseEuropeanCountries := 
+    array {
+        for $release in $releases?*,
+            $country in $europeanCountries?*
+        (: XE stands for Europe!:)
+        where ($release?country = $country?country or $release?country = "XE") and fn:contains($release?title, $graveyard)
+        group by $cca2 := $release?country,
+                 $name := $country?name
+        let $distance := local:get-distance-from-hungary(array{ fn:distinct-values($country?neighbours) }, 0)
+        order by fn:abs($distance)
+        return map {
+            "country" : $cca2,
+            "name" : $name,
+            "distanceFromHungary" : $distance
+        }
+    },
+    $resultDocument := 
+    <europe>        
+        {
+         comment {
+                "if distanceFromHungary = 999 means that we found a non european neighbour -> stopping search\n"                         
+            }        
+        }
+        {
+         comment {
+             "if distanceFromHungary has a negative value that means we found ourselves in an infiinite neighbour loop, we cannot reach Hungary form here"
+         }
+        }
+        {                   
+            for $country in $releaseEuropeanCountries?*
+            return             
+            <country name="{$country?name}" cca2="{$country?country}" distanceFromHungary="{$country?distanceFromHungary}">
+                {
+                    if ($country?distanceFromHungary = fn:min(for $d in $releaseEuropeanCountries?* return fn:abs($d?distanceFromHungary)))
+                    then attribute closest{
+                        true()
+                    }
+                    else ()
+                }
+            </country>
+        }
+    </europe>,
+    $validationMessage := validate:xsd-report($resultDocument, "the_graveyard.xsd")
+    return
+    if (fn:contains($validationMessage, "invalid"))
+    then $validationMessage
+    else $resultDocument
+```
+**Válasz kiemnet**
+```xml
+<europe>
+  <!--if distanceFromHungary = 999 means that we found a non european neighbour -> stopping search\n-->
+  <!--if distanceFromHungary has a negative value that means we found ourselves in an infiinite neighbour loop, we cannot reach Hungary form here-->
+  <country name="Germany" cca2="DE" distanceFromHungary="2" closest="true"/>
+  <country name="Denmark" cca2="DK" distanceFromHungary="3"/>
+</europe>
+```
+
+9. **Feladat:** Mely médiaformátumok preferáltak az egyes kiadóknál az európai piacon? Készítsük el azt az XML dokumentumot, ami erre a kérdésre választ ad! Az egyes kiadókhoz adjuk meg az általuk eddig használt formátumokat népszerűség szerint csökkenő sorrendben, továbbá a formátumokhoz, hogy hányszor lettek használva az adott kiadó által. </br>
 Típus: **XML**
 ```xquery
 ```
@@ -1279,16 +1545,7 @@ Típus: **XML**
 
 ```
 
-9. **Feladat:** </br>
-Típus: **XML**
-```xquery
-```
-**Válasz kiemnet**
-```xml
-
-```
-
-10. **Feladat:** </br>
+10. **Feladat:** Készítsünk HTML5 weboldalt King Diamond diszkográfiájának! A weboldal tartalmazza az egyes albumok albumborítóját, a zeneszámaik címét, hosszukat formázva MM:SS alakban. Az albumokhoz adjuk meg a kiadási országainak zászlaját is! Stilizáljuk a weboldalt!</br>
 Típus: **HTML5**
 ```xquery
 ```
