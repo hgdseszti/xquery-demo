@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="discography">
+        <xs:complexType>
+            <xs:all>
+                <xs:element name="albums" maxOccurs="1" minOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="album" 
+                                        type="albumType"
+                                        minOccurs="1" 
+                                        maxOccurs="unbounded"
+                                        />
+                        </xs:sequence>
+                        <xs:attribute name="count" 
+                                      type="xs:unsignedInt"
+                                      use="required"
+                                        />
+                    </xs:complexType>
+                </xs:element>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:complexType name="albumType">
+        <xs:all>
+            <xs:element name="songs" minOccurs="1" maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="song"
+                            type="songType"
+                            minOccurs="1" 
+                            maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:all>
+        <xs:attribute name="title" type="xs:string" use="required"/>
+        <xs:attribute name="release-date" type="xs:unsignedLong" use="required"/>
+    </xs:complexType>
+    
+    <xs:complexType name="songType">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="duration" type="durationSimpleType" />
+    </xs:complexType>
+    
+    <xs:simpleType name="durationSimpleType">
+        <xs:restriction base="xs:double">
+            <xs:minInclusive value="0.00"></xs:minInclusive>         
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

@@ -4,6 +4,7 @@ import module namespace kd-utilities = "http://kingdiamond.util" at "../utilitie
 
 declare namespace array = "http://www.w3.org/2005/xpath-functions/array";
 declare namespace map = "http://www.w3.org/2005/xpath-functions/map";
+declare namespace validate = "http://basex.org/modules/validate";
 
 declare option output:method "xml";
 declare option output:indent "yes";
@@ -30,9 +31,9 @@ let $firstReleasesWithId :=  array { for $release in $releases?*
                                             return $rel?id 
                                           }
                                         ,1)
-                             }}
+                             }},
                              
-return 
+$resultDocument :=
 <discography>
     <albums count="{array:size($firstReleasesWithId)}">
         {
@@ -44,12 +45,13 @@ return
                     <songs>
                         {
                             for $song in local:mergeMedia($r?media, 1)?*
+                            let $duration := if (fn:exists($song?length)) then $song?length else 0.0
                             return 
-                                <song name="{$song?title}" duration="{fn:round(xs:double($song?length) div 1000 div 60,2)}" />
+                                <song name="{$song?title}" duration="{fn:round(xs:double($duration) div 1000 div 60,2)}" />
                         }
                     </songs>
                 </album>
         }
     </albums>
-</discography>                          
-                                    
+</discography>             
+return validate:xsd-report($resultDocument, "simple_discography.xsd")
