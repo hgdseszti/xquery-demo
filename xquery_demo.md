@@ -1619,7 +1619,7 @@ let $releaseEuropeanCountries :=
 </europe>
 ```
 
-9. **Feladat:** Mely médiaformátumok preferáltak az egyes kiadóknál az európai piacon? Készítsük el azt az XML dokumentumot, ami erre a kérdésre választ ad! Az egyes kiadókhoz adjuk meg az általuk eddig használt formátumokat népszerűség szerint csökkenő sorrendben, továbbá a formátumokhoz, hogy hányszor lettek használva az adott kiadó által. </br>
+9. **Feladat:** Mely médiaformátumok preferáltak az egyes kiadóknál az európai piacon? Készítsük el azt az XML dokumentumot, ami erre a kérdésre választ ad! Az egyes kiadókhoz adjuk meg az általuk eddig használt formátumokat népszerűség szerint csökkenő sorrendben, továbbá a formátumokhoz, hogy hányszor lettek használva az adott kiadó által, illetve, hogy melyik az adott kiadó által elsőzör kiadott, albumnál kerültek először felhasználásra és mikor? </br>
 Típus: **XML**
 ```xquery
 ```
