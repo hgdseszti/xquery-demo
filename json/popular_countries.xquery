@@ -1,3 +1,9 @@
+(:~
+: This query returns the top 3 countries where most of the releases happened. The most popular album with its release count is also associated with the countries in the result JSON.
+:
+: @author Racs Tamás
+:)
+
 xquery version "3.1";
 
 import module namespace kd-utilities = "http://kingdiamond.util" at "../utilities/init.xquery";declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";

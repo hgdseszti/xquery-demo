@@ -1,3 +1,9 @@
+(:~
+: This query returns the names of songs recorded in The Spider's Lullabye album.
+:
+: @author Racs Tamás
+:)
+
 xquery version "3.1";
 
 import module namespace kd-utilities = "http://kingdiamond.util" at "../utilities/init.xquery";
@@ -9,6 +15,13 @@ declare option output:indent "yes";
 
 declare variable $releases := kd-utilities:get-releases();
 
+(:~
+: Private function used for merging the available media of a release.
+:
+: $param $media array containing the available media for the release
+: @param $index used for indexing the $media array
+: @return a JSON array of song objects
+:)
 declare %private function local:mergeCDs($media as array(*), $index as xs:integer) as array(*)
 {
     if (array:size($media) = $index)

@@ -1,3 +1,8 @@
+(:~
+: This query returns the number of releases of King Diamond by counting the received objects from MusicBrainZ Web API
+:
+: @author Racs Tamás
+:)
 xquery version "3.1";
 
 import module namespace kd-utilities = "http://kingdiamond.util" at "../utilities/init.xquery";

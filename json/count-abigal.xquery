@@ -1,3 +1,9 @@
+(:~
+: This query the number of releases of the album 'Abigal' before 1999.
+:
+: @author Racs Tamás
+:)
+
 xquery version "3.1";
 
 import module namespace kd-utilities = "http://kingdiamond.util" at "../utilities/init.xquery";
