@@ -1,3 +1,9 @@
+(:~
+: This query returns an XML document which represents the discography of King Diamond
+:
+: @author Racs Tamás
+:)
+
 xquery version "3.1";
 
 import module namespace kd-utilities = "http://kingdiamond.util" at "../utilities/init.xquery";declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
@@ -9,6 +15,13 @@ declare namespace validate = "http://basex.org/modules/validate";
 declare option output:method "xml";
 declare option output:indent "yes";
 
+(:~
+: Private function used for merging the available media of a release.
+:
+: $param $media array containing the available media for the release
+: @param $index used for indexing the $media array
+: @return an array of song objects
+:)
 declare %private function local:mergeMedia($media as array(*), $index as xs:integer) as array(*)
 {
     if (array:size($media) = $index)

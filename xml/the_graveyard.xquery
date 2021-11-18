@@ -1,3 +1,10 @@
+(:~
+: This query returns an XML document containing the names of all the european countries where 'The Graveyard' was released.
+: The query also calculates the distance from Hungary for each country and marks the cloesst ones to Hungary. 
+:
+: @author Racs Tamás
+:)
+
 xquery version "3.1";
 
 import module namespace kd-utilities = "http://kingdiamond.util" at "../utilities/init.xquery";
@@ -8,12 +15,23 @@ declare namespace validate = "http://basex.org/modules/validate";
 declare option output:method "xml";
 declare option output:indent "yes";
 
-declare function local:get-countries() as array(*)
+(:~
+: Private function used for interfacing with restcountries.com. The function retrieves all the countries recorded in their database.
+: 
+: @return a JSON array of country objects
+:)
+declare %private function local:get-countries() as array(*)
 {
    fn:json-doc("https://restcountries.com/v3.1/all")       
 };
-
-declare function local:get-distance-from-hungary($cca3Borders as array(*), $depth as xs:integer) as xs:integer
+(:~
+: This private function is used to determine the distance between a country and Hungary.
+:
+: @param $cca3Borders array of cca3 values
+: @param $depth used for controlling the depth of recursion
+: @return a positive integer representing the distance from a given country to Hungary
+:)
+declare %private function local:get-distance-from-hungary($cca3Borders as array(*), $depth as xs:integer) as xs:integer
 {
     if ($depth ge 10 or array:size($cca3Borders) eq 0)
     then 

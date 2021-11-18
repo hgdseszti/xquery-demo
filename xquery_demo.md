@@ -44,6 +44,11 @@ basex songs_tpl.xquery
 1. **Feladat:**  A _MusicBrainz API_ szerint King Diamond összes hivatalos albumának összesen 94 kiadása van. Igazoljuk ezt egy XQuery lekérdezéssel!</br>
 Típus: **JSON**
 ```xquery
+(:~
+: This query returns the number of releases of King Diamond by counting the received objects from MusicBrainZ Web API
+:
+: @author Racs Tamás
+:)
 xquery version "3.1";
 
 import module namespace kd-utilities = "http://kingdiamond.util" at "../utilities/init.xquery";
@@ -64,6 +69,12 @@ return count(fn:distinct-values(array {for $index in 1 to array:size($data) retu
 2. **Feladat:** Készítsünk egy JSON tömböt, amely tartalmazza King Diamond _The Spider's Lullaby_ albumának egyik kiadásában szereplő zeneszámainak címét! </br>
 Típus: **JSON**
 ```xquery
+(:~
+: This query returns the names of songs recorded in The Spider's Lullabye album.
+:
+: @author Racs Tamás
+:)
+
 xquery version "3.1";
 
 import module namespace kd-utilities = "http://kingdiamond.util" at "../utilities/init.xquery";
@@ -75,6 +86,13 @@ declare option output:indent "yes";
 
 declare variable $releases := kd-utilities:get-releases();
 
+(:~
+: Private function used for merging the available media of a release.
+:
+: $param $media array containing the available media for the release
+: @param $index used for indexing the $media array
+: @return a JSON array of song objects
+:)
 declare %private function local:mergeCDs($media as array(*), $index as xs:integer) as array(*)
 {
     if (array:size($media) = $index)
@@ -90,7 +108,7 @@ let $mergedCDs := local:mergeCDs($spiders-lullaby[1]?media, 1)
           
 return array {          
     for $songId in 1 to array:size($mergedCDs)
-    return  array:get($mergedCDs, $songId)?title }       
+    return  array:get($mergedCDs, $songId)?title }            
 ```
 **Válasz kiemnet**
 ```json
@@ -114,6 +132,12 @@ return array {
 3. **Feladat:** Hányszor adták ki az _Abigal_ albumot 1999 előtt?</br>
 Típus: **JSON**
 ```xquery
+(:~
+: This query the number of releases of the album 'Abigal' before 1999.
+:
+: @author Racs Tamás
+:)
+
 xquery version "3.1";
 
 import module namespace kd-utilities = "http://kingdiamond.util" at "../utilities/init.xquery";
@@ -143,6 +167,12 @@ array:size($dates)
 4. **Feladat:** Állítsuk elő azt a JSON dokumentumot, ami tartalmazza a kiadókat. A kiadókhoz adjuk meg a kiadott albumok címét, illetve kiadási dátumát. Rendezzük a kiadókon belül az albumokat kiadási dátumok szerint növekvő sorrendben!</br>
 Típus: **JSON**
 ```xquery
+(:~
+: This query returns each label associated with King Diamond with the albums they published with their release dates included.
+:
+: @author Racs Tamás
+:)
+
 xquery version "3.1";
 
 import module namespace kd-utilities = "http://kingdiamond.util" at "../utilities/init.xquery";
@@ -156,6 +186,15 @@ declare option output:indent "yes";
 declare variable $releases := kd-utilities:get-releases();
 declare variable $labels := array:join(for $release in $releases?* return $release?label-info);
 
+(:~
+: Private function used for searching for an element inside an array.
+:
+: @param $arr the context of the search
+: @param $index the current depth of the search
+: @param $item the element we're searching for in $arr
+: @return true() if $item is found inside $arr
+          false() otherwise
+:)
 declare %private function local:array-contains($arr as array(*),$index as xs:integer, $item as xs:string) as xs:boolean
 {
     if (array:size($arr) + 1 = $index)
@@ -622,6 +661,12 @@ map:entry("publishers", array:join(
 Készítsük el azt a JSON dokumentumot, amit tartalmazza azt a 3 legnépszerűbb országot, ahol a legtöbb kiadás történt. Az országok mellé adjuk meg, hogy hány kiadással rendelkeznek, illetve melyik album a legnépszerűbb az adott országban és azt hányszor adták ki az adott országban!  
 Típus: **JSON**  
 ```xquery
+(:~
+: This query returns the top 3 countries where most of the releases happened. The most popular album with its release count is also associated with the countries in the result JSON.
+:
+: @author Racs Tamás
+:)
+
 xquery version "3.1";
 
 import module namespace kd-utilities = "http://kingdiamond.util" at "../utilities/init.xquery";declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
@@ -730,6 +775,12 @@ return $resultDocument
 6. **Feladat:** Készítsük el _King Diamond_ diszkográfiájának XML reprezentációját! A diszkográfia albumonként tartalmazza a címét, zenedarabjainak címét és játékidejét percben, illetve a kiadási évét. Ha egy albumnnak több kiadása is van, akkor a legelső kiadását tegyük a diszkográfiába! </br>
 Típus: **XML**
 ```xquery
+(:~
+: This query returns an XML document which represents the discography of King Diamond
+:
+: @author Racs Tamás
+:)
+
 xquery version "3.1";
 
 import module namespace kd-utilities = "http://kingdiamond.util" at "../utilities/init.xquery";declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
@@ -741,6 +792,13 @@ declare namespace validate = "http://basex.org/modules/validate";
 declare option output:method "xml";
 declare option output:indent "yes";
 
+(:~
+: Private function used for merging the available media of a release.
+:
+: $param $media array containing the available media for the release
+: @param $index used for indexing the $media array
+: @return an array of song objects
+:)
 declare %private function local:mergeMedia($media as array(*), $index as xs:integer) as array(*)
 {
     if (array:size($media) = $index)
@@ -1331,6 +1389,13 @@ Kapcsolódó [XML Séma](./xml/countrycode_with_packaging.xsd)
 
 Típus:  **XML**
 ```xquery
+(:~
+: This query returns an XML document which describes the used packaging formats of each release countries.
+: The query also determines how many times a packaging format was used per country. 
+: Only releases with front covers are taken into calculations.
+:
+: @author Racs Tamás
+:)
 xquery version "3.1";
 
 import module namespace kd-utilities = "http://kingdiamond.util" at "../utilities/init.xquery";
@@ -1342,6 +1407,7 @@ declare option output:method "xml";
 declare option output:indent "yes";
 
 declare variable $releases := kd-utilities:get-releases();
+
 
 let $result := 
         array {
@@ -1377,8 +1443,7 @@ $validationMessage := validate:xsd-report($resultDocument, "countrycode_with_pac
 return
     if (fn:contains($validationMessage, "invalid"))
     then $validationMessage
-    else $resultDocument
-    
+    else $resultDocument    
 ```
 **Válasz kiemnet**
 ```xml
@@ -1428,6 +1493,13 @@ Kapcsolódó [XML Séma](./xml/the_graveyard.xsd)
 
 Típus: **XML**
 ```xquery
+(:~
+: This query returns an XML document containing the names of all the european countries where 'The Graveyard' was released.
+: The query also calculates the distance from Hungary for each country and marks the cloesst ones to Hungary. 
+:
+: @author Racs Tamás
+:)
+
 xquery version "3.1";
 
 import module namespace kd-utilities = "http://kingdiamond.util" at "../utilities/init.xquery";
@@ -1438,12 +1510,23 @@ declare namespace validate = "http://basex.org/modules/validate";
 declare option output:method "xml";
 declare option output:indent "yes";
 
-declare function local:get-countries() as array(*)
+(:~
+: Private function used for interfacing with restcountries.com. The function retrieves all the countries recorded in their database.
+: 
+: @return a JSON array of country objects
+:)
+declare %private function local:get-countries() as array(*)
 {
    fn:json-doc("https://restcountries.com/v3.1/all")       
 };
-
-declare function local:get-distance-from-hungary($cca3Borders as array(*), $depth as xs:integer) as xs:integer
+(:~
+: This private function is used to determine the distance between a country and Hungary.
+:
+: @param $cca3Borders array of cca3 values
+: @param $depth used for controlling the depth of recursion
+: @return a positive integer representing the distance from a given country to Hungary
+:)
+declare %private function local:get-distance-from-hungary($cca3Borders as array(*), $depth as xs:integer) as xs:integer
 {
     if ($depth ge 10 or array:size($cca3Borders) eq 0)
     then 

@@ -20,7 +20,7 @@ declare variable $releases := kd-utilities:get-releases();
 :
 : $param $media array containing the available media for the release
 : @param $index used for indexing the $media array
-: @return a JSON array of song objects
+: @return an array of song objects
 :)
 declare %private function local:mergeCDs($media as array(*), $index as xs:integer) as array(*)
 {

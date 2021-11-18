@@ -1,3 +1,10 @@
+(:~
+: This query returns an XML document which describes the used packaging formats of each release countries.
+: The query also determines how many times a packaging format was used per country. 
+: Only releases with front covers are taken into calculations.
+:
+: @author Racs Tamás
+:)
 xquery version "3.1";
 
 import module namespace kd-utilities = "http://kingdiamond.util" at "../utilities/init.xquery";
