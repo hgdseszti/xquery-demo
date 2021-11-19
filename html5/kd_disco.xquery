@@ -118,7 +118,12 @@ let $albumTitles := array {fn:distinct-values(for $r in $releases?* return fn:re
                                     {
                                         for $track at $i in $album?tracks?*
                                         let $trackLengthInSeconds := $track?length div 1000,
-                                            $trackLengthInMinutes := fn:concat(fn:string(fn:round($trackLengthInSeconds div 60)),':', fn:string(fn:round($trackLengthInSeconds mod 60)))
+                                            $trackLengthMinutePartial := fn:string(fn:round($trackLengthInSeconds div 60)),
+                                            $trackLengthSecondsPartial := fn:string(fn:round($trackLengthInSeconds mod 60)),
+                                            $trackLengthInMinutes := fn:concat(
+                                                if (fn:string-length($trackLengthMinutePartial) < 2) then fn:concat("0", $trackLengthMinutePartial) else $trackLengthMinutePartial,
+                                                ':',
+                                                if (fn:string-length($trackLengthSecondsPartial) < 2) then fn:concat("0", $trackLengthSecondsPartial) else $trackLengthSecondsPartial)
                                         return
                                             <tr class="track-{$i}">
                                                 <td>{$i}</td>
