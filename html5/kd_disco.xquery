@@ -74,13 +74,14 @@ let $albumTitles := array {fn:distinct-values(for $r in $releases?* return fn:re
                     (for $r in $releases?*
                     where $r?cover-art-archive?front and fn:replace($r?title, '"+|“+|”+|’+|…+|–+', '') = $title and fn:exists($r?date)
                     order by $r?date
-                    return $r)[1]
-                    
+                    return $r)[1],
+            $rDate := local:get-first-release-date($title)
+        order by $rDate           
         return 
         if (fn:exists($firstInstance?id))
         then map {
             "title" : fn:replace($firstInstance?title, '"+|“+|”+|’+|…+|–+', ''),
-            "release-date": local:get-first-release-date($title),
+            "release-date": $rDate,
             "id": $firstInstance?id,
             "tracks": array:join(for $m in $firstInstance?media?* return $m?tracks)
         }
@@ -100,13 +101,17 @@ let $albumTitles := array {fn:distinct-values(for $r in $releases?* return fn:re
                         <div class="album-{$idx}">
                             <div class="coverContainer">
                                 <img src="{local:get-front-album-cover($album?id)}" alt="Cover Of {$album?title}" class="album-cover-{$idx}"/>
-                            </div>
+                            </div>                           
                             <div class="tracksContainer">
+                                 <div class="flagContainer">
+                                     <p>
+                                          {local:get-release-country-flags($album?title)} 
+                                     </p>
+                                 </div>
                                 <table class="album">
                                     <thead>
                                         <tr class="albumHeader">
-                                            <th colspan="2">{$album?title} {($album?release-date)}</th>
-                                            <th>{local:get-release-country-flags($album?title)}</th>
+                                            <th colspan="3">{fn:concat($album?title, ' (', $album?release-date, ')')}</th>
                                         </tr>
                                     </thead>
                                     <tbody class="albumBody">

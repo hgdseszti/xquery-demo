@@ -1,0 +1,1502 @@
+body {
+  height: 100%;
+  background: black;
+  color: white;
+}
+body div.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+body div.album-1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+body div.album-1 div.coverContainer {
+  flex: 1;
+}
+body div.album-1 div.coverContainer img.album-cover-1 {
+  width: 100%;
+  height: auto;
+}
+body div.album-1 div.tracksContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  border: 0.5em solid #524300;
+  box-shadow: 1px 1px 20px #524300;
+}
+body div.album-1 div.tracksContainer div.flagContainer p {
+  text-align: center;
+  width: auto;
+  font-size: 20pt;
+}
+body div.album-1 div.tracksContainer table.album {
+  table-layout: auto;
+  font-size: 24pt;
+  width: 100%;
+  height: 100%;
+}
+body div.album-1 div.tracksContainer table.album tr.albumHeader {
+  font-size: 26pt;
+}
+body div.album-1 div.tracksContainer table.album tr.albumHeader th[colspan] {
+  text-align: center;
+  vertical-align: middle;
+  font-family: monospace;
+}
+body div.album-1 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd) {
+  background-color: #b89600;
+}
+body div.album-1 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd):hover {
+  background-color: #524300;
+}
+body div.album-1 div.tracksContainer table.album tbody.albumBody tr:nth-child(even) {
+  background-color: black;
+}
+body div.album-1 div.tracksContainer table.album tbody.albumBody tr:nth-child(even):hover {
+  background-color: #524300;
+}
+body div.album-1 div.tracksContainer table.album tbody.albumBody tr td:first-child {
+  text-align: right;
+  vertical-align: middle;
+  font-weight: bold;
+  width: 10%;
+  white-space: nowrap;
+  padding-right: 0.1em;
+}
+body div.album-1 div.tracksContainer table.album tbody.albumBody tr td.track-title {
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+  padding-left: 0.1em;
+}
+body div.album-1 div.tracksContainer table.album tbody.albumBody tr td.track-length {
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 1em;
+  width: 10%;
+}
+body div.album-2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+body div.album-2 div.coverContainer {
+  flex: 1;
+}
+body div.album-2 div.coverContainer img.album-cover-2 {
+  width: 100%;
+  height: auto;
+}
+body div.album-2 div.tracksContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  border: 0.5em solid #034564;
+  box-shadow: 1px 1px 20px #034564;
+}
+body div.album-2 div.tracksContainer div.flagContainer p {
+  text-align: center;
+  width: auto;
+  font-size: 20pt;
+}
+body div.album-2 div.tracksContainer table.album {
+  table-layout: auto;
+  font-size: 24pt;
+  width: 100%;
+  height: 100%;
+}
+body div.album-2 div.tracksContainer table.album tr.albumHeader {
+  font-size: 26pt;
+}
+body div.album-2 div.tracksContainer table.album tr.albumHeader th[colspan] {
+  text-align: center;
+  vertical-align: middle;
+  font-family: monospace;
+}
+body div.album-2 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd) {
+  background-color: #0689c7;
+}
+body div.album-2 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd):hover {
+  background-color: #004667;
+}
+body div.album-2 div.tracksContainer table.album tbody.albumBody tr:nth-child(even) {
+  background-color: #000101;
+}
+body div.album-2 div.tracksContainer table.album tbody.albumBody tr:nth-child(even):hover {
+  background-color: #004667;
+}
+body div.album-2 div.tracksContainer table.album tbody.albumBody tr td:first-child {
+  text-align: right;
+  vertical-align: middle;
+  font-weight: bold;
+  width: 10%;
+  white-space: nowrap;
+  padding-right: 0.1em;
+}
+body div.album-2 div.tracksContainer table.album tbody.albumBody tr td.track-title {
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+  padding-left: 0.1em;
+}
+body div.album-2 div.tracksContainer table.album tbody.albumBody tr td.track-length {
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 1em;
+  width: 10%;
+}
+body div.album-3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+body div.album-3 div.coverContainer {
+  flex: 1;
+}
+body div.album-3 div.coverContainer img.album-cover-3 {
+  width: 100%;
+  height: auto;
+}
+body div.album-3 div.tracksContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  border: 0.5em solid #4f6594;
+  box-shadow: 1px 1px 20px #4f6594;
+}
+body div.album-3 div.tracksContainer div.flagContainer p {
+  text-align: center;
+  width: auto;
+  font-size: 20pt;
+}
+body div.album-3 div.tracksContainer table.album {
+  table-layout: auto;
+  font-size: 24pt;
+  width: 100%;
+  height: 100%;
+}
+body div.album-3 div.tracksContainer table.album tr.albumHeader {
+  font-size: 26pt;
+}
+body div.album-3 div.tracksContainer table.album tr.albumHeader th[colspan] {
+  text-align: center;
+  vertical-align: middle;
+  font-family: monospace;
+}
+body div.album-3 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd) {
+  background-color: #899bc0;
+}
+body div.album-3 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd):hover {
+  background-color: #2d59b6;
+}
+body div.album-3 div.tracksContainer table.album tbody.albumBody tr:nth-child(even) {
+  background-color: #2c3851;
+}
+body div.album-3 div.tracksContainer table.album tbody.albumBody tr:nth-child(even):hover {
+  background-color: #2d59b6;
+}
+body div.album-3 div.tracksContainer table.album tbody.albumBody tr td:first-child {
+  text-align: right;
+  vertical-align: middle;
+  font-weight: bold;
+  width: 10%;
+  white-space: nowrap;
+  padding-right: 0.1em;
+}
+body div.album-3 div.tracksContainer table.album tbody.albumBody tr td.track-title {
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+  padding-left: 0.1em;
+}
+body div.album-3 div.tracksContainer table.album tbody.albumBody tr td.track-length {
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 1em;
+  width: 10%;
+}
+body div.album-4 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+body div.album-4 div.coverContainer {
+  flex: 1;
+}
+body div.album-4 div.coverContainer img.album-cover-4 {
+  width: 100%;
+  height: auto;
+}
+body div.album-4 div.tracksContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  border: 0.5em solid #9c0000;
+  box-shadow: 1px 1px 20px #9c0000;
+}
+body div.album-4 div.tracksContainer div.flagContainer p {
+  text-align: center;
+  width: auto;
+  font-size: 20pt;
+}
+body div.album-4 div.tracksContainer table.album {
+  table-layout: auto;
+  font-size: 24pt;
+  width: 100%;
+  height: 100%;
+}
+body div.album-4 div.tracksContainer table.album tr.albumHeader {
+  font-size: 26pt;
+}
+body div.album-4 div.tracksContainer table.album tr.albumHeader th[colspan] {
+  text-align: center;
+  vertical-align: middle;
+  font-family: monospace;
+}
+body div.album-4 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd) {
+  background-color: #ff0303;
+}
+body div.album-4 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd):hover {
+  background-color: #9c0000;
+}
+body div.album-4 div.tracksContainer table.album tbody.albumBody tr:nth-child(even) {
+  background-color: #360000;
+}
+body div.album-4 div.tracksContainer table.album tbody.albumBody tr:nth-child(even):hover {
+  background-color: #9c0000;
+}
+body div.album-4 div.tracksContainer table.album tbody.albumBody tr td:first-child {
+  text-align: right;
+  vertical-align: middle;
+  font-weight: bold;
+  width: 10%;
+  white-space: nowrap;
+  padding-right: 0.1em;
+}
+body div.album-4 div.tracksContainer table.album tbody.albumBody tr td.track-title {
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+  padding-left: 0.1em;
+}
+body div.album-4 div.tracksContainer table.album tbody.albumBody tr td.track-length {
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 1em;
+  width: 10%;
+}
+body div.album-5 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+body div.album-5 div.coverContainer {
+  flex: 1;
+}
+body div.album-5 div.coverContainer img.album-cover-5 {
+  width: 100%;
+  height: auto;
+}
+body div.album-5 div.tracksContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  border: 0.5em solid #5c2074;
+  box-shadow: 1px 1px 20px #5c2074;
+}
+body div.album-5 div.tracksContainer div.flagContainer p {
+  text-align: center;
+  width: auto;
+  font-size: 20pt;
+}
+body div.album-5 div.tracksContainer table.album {
+  table-layout: auto;
+  font-size: 24pt;
+  width: 100%;
+  height: 100%;
+}
+body div.album-5 div.tracksContainer table.album tr.albumHeader {
+  font-size: 26pt;
+}
+body div.album-5 div.tracksContainer table.album tr.albumHeader th[colspan] {
+  text-align: center;
+  vertical-align: middle;
+  font-family: monospace;
+}
+body div.album-5 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd) {
+  background-color: #9b36c4;
+}
+body div.album-5 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd):hover {
+  background-color: #660a8a;
+}
+body div.album-5 div.tracksContainer table.album tbody.albumBody tr:nth-child(even) {
+  background-color: #1d0a24;
+}
+body div.album-5 div.tracksContainer table.album tbody.albumBody tr:nth-child(even):hover {
+  background-color: #660a8a;
+}
+body div.album-5 div.tracksContainer table.album tbody.albumBody tr td:first-child {
+  text-align: right;
+  vertical-align: middle;
+  font-weight: bold;
+  width: 10%;
+  white-space: nowrap;
+  padding-right: 0.1em;
+}
+body div.album-5 div.tracksContainer table.album tbody.albumBody tr td.track-title {
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+  padding-left: 0.1em;
+}
+body div.album-5 div.tracksContainer table.album tbody.albumBody tr td.track-length {
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 1em;
+  width: 10%;
+}
+body div.album-6 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+body div.album-6 div.coverContainer {
+  flex: 1;
+}
+body div.album-6 div.coverContainer img.album-cover-6 {
+  width: 100%;
+  height: auto;
+}
+body div.album-6 div.tracksContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  border: 0.5em solid #420000;
+  box-shadow: 1px 1px 20px #420000;
+}
+body div.album-6 div.tracksContainer div.flagContainer p {
+  text-align: center;
+  width: auto;
+  font-size: 20pt;
+}
+body div.album-6 div.tracksContainer table.album {
+  table-layout: auto;
+  font-size: 24pt;
+  width: 100%;
+  height: 100%;
+}
+body div.album-6 div.tracksContainer table.album tr.albumHeader {
+  font-size: 26pt;
+}
+body div.album-6 div.tracksContainer table.album tr.albumHeader th[colspan] {
+  text-align: center;
+  vertical-align: middle;
+  font-family: monospace;
+}
+body div.album-6 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd) {
+  background-color: #a80000;
+}
+body div.album-6 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd):hover {
+  background-color: #420000;
+}
+body div.album-6 div.tracksContainer table.album tbody.albumBody tr:nth-child(even) {
+  background-color: black;
+}
+body div.album-6 div.tracksContainer table.album tbody.albumBody tr:nth-child(even):hover {
+  background-color: #420000;
+}
+body div.album-6 div.tracksContainer table.album tbody.albumBody tr td:first-child {
+  text-align: right;
+  vertical-align: middle;
+  font-weight: bold;
+  width: 10%;
+  white-space: nowrap;
+  padding-right: 0.1em;
+}
+body div.album-6 div.tracksContainer table.album tbody.albumBody tr td.track-title {
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+  padding-left: 0.1em;
+}
+body div.album-6 div.tracksContainer table.album tbody.albumBody tr td.track-length {
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 1em;
+  width: 10%;
+}
+body div.album-7 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+body div.album-7 div.coverContainer {
+  flex: 1;
+}
+body div.album-7 div.coverContainer img.album-cover-7 {
+  width: 100%;
+  height: auto;
+}
+body div.album-7 div.tracksContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  border: 0.5em solid #5c5c5c;
+  box-shadow: 1px 1px 20px #5c5c5c;
+}
+body div.album-7 div.tracksContainer div.flagContainer p {
+  text-align: center;
+  width: auto;
+  font-size: 20pt;
+}
+body div.album-7 div.tracksContainer table.album {
+  table-layout: auto;
+  font-size: 24pt;
+  width: 100%;
+  height: 100%;
+}
+body div.album-7 div.tracksContainer table.album tr.albumHeader {
+  font-size: 26pt;
+}
+body div.album-7 div.tracksContainer table.album tr.albumHeader th[colspan] {
+  text-align: center;
+  vertical-align: middle;
+  font-family: monospace;
+}
+body div.album-7 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd) {
+  background-color: #8f8f8f;
+}
+body div.album-7 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd):hover {
+  background-color: #784040;
+}
+body div.album-7 div.tracksContainer table.album tbody.albumBody tr:nth-child(even) {
+  background-color: #292929;
+}
+body div.album-7 div.tracksContainer table.album tbody.albumBody tr:nth-child(even):hover {
+  background-color: #784040;
+}
+body div.album-7 div.tracksContainer table.album tbody.albumBody tr td:first-child {
+  text-align: right;
+  vertical-align: middle;
+  font-weight: bold;
+  width: 10%;
+  white-space: nowrap;
+  padding-right: 0.1em;
+}
+body div.album-7 div.tracksContainer table.album tbody.albumBody tr td.track-title {
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+  padding-left: 0.1em;
+}
+body div.album-7 div.tracksContainer table.album tbody.albumBody tr td.track-length {
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 1em;
+  width: 10%;
+}
+body div.album-8 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+body div.album-8 div.coverContainer {
+  flex: 1;
+}
+body div.album-8 div.coverContainer img.album-cover-8 {
+  width: 100%;
+  height: auto;
+}
+body div.album-8 div.tracksContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  border: 0.5em solid #2e0133;
+  box-shadow: 1px 1px 20px #2e0133;
+}
+body div.album-8 div.tracksContainer div.flagContainer p {
+  text-align: center;
+  width: auto;
+  font-size: 20pt;
+}
+body div.album-8 div.tracksContainer table.album {
+  table-layout: auto;
+  font-size: 24pt;
+  width: 100%;
+  height: 100%;
+}
+body div.album-8 div.tracksContainer table.album tr.albumHeader {
+  font-size: 26pt;
+}
+body div.album-8 div.tracksContainer table.album tr.albumHeader th[colspan] {
+  text-align: center;
+  vertical-align: middle;
+  font-family: monospace;
+}
+body div.album-8 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd) {
+  background-color: #880397;
+}
+body div.album-8 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd):hover {
+  background-color: #2f0034;
+}
+body div.album-8 div.tracksContainer table.album tbody.albumBody tr:nth-child(even) {
+  background-color: black;
+}
+body div.album-8 div.tracksContainer table.album tbody.albumBody tr:nth-child(even):hover {
+  background-color: #2f0034;
+}
+body div.album-8 div.tracksContainer table.album tbody.albumBody tr td:first-child {
+  text-align: right;
+  vertical-align: middle;
+  font-weight: bold;
+  width: 10%;
+  white-space: nowrap;
+  padding-right: 0.1em;
+}
+body div.album-8 div.tracksContainer table.album tbody.albumBody tr td.track-title {
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+  padding-left: 0.1em;
+}
+body div.album-8 div.tracksContainer table.album tbody.albumBody tr td.track-length {
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 1em;
+  width: 10%;
+}
+body div.album-9 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+body div.album-9 div.coverContainer {
+  flex: 1;
+}
+body div.album-9 div.coverContainer img.album-cover-9 {
+  width: 100%;
+  height: auto;
+}
+body div.album-9 div.tracksContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  border: 0.5em solid #49394d;
+  box-shadow: 1px 1px 20px #49394d;
+}
+body div.album-9 div.tracksContainer div.flagContainer p {
+  text-align: center;
+  width: auto;
+  font-size: 20pt;
+}
+body div.album-9 div.tracksContainer table.album {
+  table-layout: auto;
+  font-size: 24pt;
+  width: 100%;
+  height: 100%;
+}
+body div.album-9 div.tracksContainer table.album tr.albumHeader {
+  font-size: 26pt;
+}
+body div.album-9 div.tracksContainer table.album tr.albumHeader th[colspan] {
+  text-align: center;
+  vertical-align: middle;
+  font-family: monospace;
+}
+body div.album-9 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd) {
+  background-color: #816488;
+}
+body div.album-9 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd):hover {
+  background-color: #552561;
+}
+body div.album-9 div.tracksContainer table.album tbody.albumBody tr:nth-child(even) {
+  background-color: #110e12;
+}
+body div.album-9 div.tracksContainer table.album tbody.albumBody tr:nth-child(even):hover {
+  background-color: #552561;
+}
+body div.album-9 div.tracksContainer table.album tbody.albumBody tr td:first-child {
+  text-align: right;
+  vertical-align: middle;
+  font-weight: bold;
+  width: 10%;
+  white-space: nowrap;
+  padding-right: 0.1em;
+}
+body div.album-9 div.tracksContainer table.album tbody.albumBody tr td.track-title {
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+  padding-left: 0.1em;
+}
+body div.album-9 div.tracksContainer table.album tbody.albumBody tr td.track-length {
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 1em;
+  width: 10%;
+}
+body div.album-10 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+body div.album-10 div.coverContainer {
+  flex: 1;
+}
+body div.album-10 div.coverContainer img.album-cover-10 {
+  width: 100%;
+  height: auto;
+}
+body div.album-10 div.tracksContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  border: 0.5em solid #7d886e;
+  box-shadow: 1px 1px 20px #7d886e;
+}
+body div.album-10 div.tracksContainer div.flagContainer p {
+  text-align: center;
+  width: auto;
+  font-size: 20pt;
+}
+body div.album-10 div.tracksContainer table.album {
+  table-layout: auto;
+  font-size: 24pt;
+  width: 100%;
+  height: 100%;
+}
+body div.album-10 div.tracksContainer table.album tr.albumHeader {
+  font-size: 26pt;
+}
+body div.album-10 div.tracksContainer table.album tr.albumHeader th[colspan] {
+  text-align: center;
+  vertical-align: middle;
+  font-family: monospace;
+}
+body div.album-10 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd) {
+  background-color: #afb7a5;
+}
+body div.album-10 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd):hover {
+  background-color: #83ad49;
+}
+body div.album-10 div.tracksContainer table.album tbody.albumBody tr:nth-child(even) {
+  background-color: #495040;
+}
+body div.album-10 div.tracksContainer table.album tbody.albumBody tr:nth-child(even):hover {
+  background-color: #83ad49;
+}
+body div.album-10 div.tracksContainer table.album tbody.albumBody tr td:first-child {
+  text-align: right;
+  vertical-align: middle;
+  font-weight: bold;
+  width: 10%;
+  white-space: nowrap;
+  padding-right: 0.1em;
+}
+body div.album-10 div.tracksContainer table.album tbody.albumBody tr td.track-title {
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+  padding-left: 0.1em;
+}
+body div.album-10 div.tracksContainer table.album tbody.albumBody tr td.track-length {
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 1em;
+  width: 10%;
+}
+body div.album-11 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+body div.album-11 div.coverContainer {
+  flex: 1;
+}
+body div.album-11 div.coverContainer img.album-cover-11 {
+  width: 100%;
+  height: auto;
+}
+body div.album-11 div.tracksContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  border: 0.5em solid #473512;
+  box-shadow: 1px 1px 20px #473512;
+}
+body div.album-11 div.tracksContainer div.flagContainer p {
+  text-align: center;
+  width: auto;
+  font-size: 20pt;
+}
+body div.album-11 div.tracksContainer table.album {
+  table-layout: auto;
+  font-size: 24pt;
+  width: 100%;
+  height: 100%;
+}
+body div.album-11 div.tracksContainer table.album tr.albumHeader {
+  font-size: 26pt;
+}
+body div.album-11 div.tracksContainer table.album tr.albumHeader th[colspan] {
+  text-align: center;
+  vertical-align: middle;
+  font-family: monospace;
+}
+body div.album-11 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd) {
+  background-color: #987227;
+}
+body div.album-11 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd):hover {
+  background-color: #543905;
+}
+body div.album-11 div.tracksContainer table.album tbody.albumBody tr:nth-child(even) {
+  background-color: black;
+}
+body div.album-11 div.tracksContainer table.album tbody.albumBody tr:nth-child(even):hover {
+  background-color: #543905;
+}
+body div.album-11 div.tracksContainer table.album tbody.albumBody tr td:first-child {
+  text-align: right;
+  vertical-align: middle;
+  font-weight: bold;
+  width: 10%;
+  white-space: nowrap;
+  padding-right: 0.1em;
+}
+body div.album-11 div.tracksContainer table.album tbody.albumBody tr td.track-title {
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+  padding-left: 0.1em;
+}
+body div.album-11 div.tracksContainer table.album tbody.albumBody tr td.track-length {
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 1em;
+  width: 10%;
+}
+body div.album-12 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+body div.album-12 div.coverContainer {
+  flex: 1;
+}
+body div.album-12 div.coverContainer img.album-cover-12 {
+  width: 100%;
+  height: auto;
+}
+body div.album-12 div.tracksContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  border: 0.5em solid #758c91;
+  box-shadow: 1px 1px 20px #758c91;
+}
+body div.album-12 div.tracksContainer div.flagContainer p {
+  text-align: center;
+  width: auto;
+  font-size: 20pt;
+}
+body div.album-12 div.tracksContainer table.album {
+  table-layout: auto;
+  font-size: 24pt;
+  width: 100%;
+  height: 100%;
+}
+body div.album-12 div.tracksContainer table.album tr.albumHeader {
+  font-size: 26pt;
+}
+body div.album-12 div.tracksContainer table.album tr.albumHeader th[colspan] {
+  text-align: center;
+  vertical-align: middle;
+  font-family: monospace;
+}
+body div.album-12 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd) {
+  background-color: #aebbbe;
+}
+body div.album-12 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd):hover {
+  background-color: #50a4b6;
+}
+body div.album-12 div.tracksContainer table.album tbody.albumBody tr:nth-child(even) {
+  background-color: #475659;
+}
+body div.album-12 div.tracksContainer table.album tbody.albumBody tr:nth-child(even):hover {
+  background-color: #50a4b6;
+}
+body div.album-12 div.tracksContainer table.album tbody.albumBody tr td:first-child {
+  text-align: right;
+  vertical-align: middle;
+  font-weight: bold;
+  width: 10%;
+  white-space: nowrap;
+  padding-right: 0.1em;
+}
+body div.album-12 div.tracksContainer table.album tbody.albumBody tr td.track-title {
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+  padding-left: 0.1em;
+}
+body div.album-12 div.tracksContainer table.album tbody.albumBody tr td.track-length {
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 1em;
+  width: 10%;
+}
+body div.album-13 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+body div.album-13 div.coverContainer {
+  flex: 1;
+}
+body div.album-13 div.coverContainer img.album-cover-13 {
+  width: 100%;
+  height: auto;
+}
+body div.album-13 div.tracksContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  border: 0.5em solid #573502;
+  box-shadow: 1px 1px 20px #573502;
+}
+body div.album-13 div.tracksContainer div.flagContainer p {
+  text-align: center;
+  width: auto;
+  font-size: 20pt;
+}
+body div.album-13 div.tracksContainer table.album {
+  table-layout: auto;
+  font-size: 24pt;
+  width: 100%;
+  height: 100%;
+}
+body div.album-13 div.tracksContainer table.album tr.albumHeader {
+  font-size: 26pt;
+}
+body div.album-13 div.tracksContainer table.album tr.albumHeader th[colspan] {
+  text-align: center;
+  vertical-align: middle;
+  font-family: monospace;
+}
+body div.album-13 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd) {
+  background-color: #bb7204;
+}
+body div.album-13 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd):hover {
+  background-color: #593500;
+}
+body div.album-13 div.tracksContainer table.album tbody.albumBody tr:nth-child(even) {
+  background-color: black;
+}
+body div.album-13 div.tracksContainer table.album tbody.albumBody tr:nth-child(even):hover {
+  background-color: #593500;
+}
+body div.album-13 div.tracksContainer table.album tbody.albumBody tr td:first-child {
+  text-align: right;
+  vertical-align: middle;
+  font-weight: bold;
+  width: 10%;
+  white-space: nowrap;
+  padding-right: 0.1em;
+}
+body div.album-13 div.tracksContainer table.album tbody.albumBody tr td.track-title {
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+  padding-left: 0.1em;
+}
+body div.album-13 div.tracksContainer table.album tbody.albumBody tr td.track-length {
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 1em;
+  width: 10%;
+}
+body div.album-14 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+body div.album-14 div.coverContainer {
+  flex: 1;
+}
+body div.album-14 div.coverContainer img.album-cover-14 {
+  width: 100%;
+  height: auto;
+}
+body div.album-14 div.tracksContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  border: 0.5em solid #263329;
+  box-shadow: 1px 1px 20px #263329;
+}
+body div.album-14 div.tracksContainer div.flagContainer p {
+  text-align: center;
+  width: auto;
+  font-size: 20pt;
+}
+body div.album-14 div.tracksContainer table.album {
+  table-layout: auto;
+  font-size: 24pt;
+  width: 100%;
+  height: 100%;
+}
+body div.album-14 div.tracksContainer table.album tr.albumHeader {
+  font-size: 26pt;
+}
+body div.album-14 div.tracksContainer table.album tr.albumHeader th[colspan] {
+  text-align: center;
+  vertical-align: middle;
+  font-family: monospace;
+}
+body div.album-14 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd) {
+  background-color: #526d58;
+}
+body div.album-14 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd):hover {
+  background-color: #194022;
+}
+body div.album-14 div.tracksContainer table.album tbody.albumBody tr:nth-child(even) {
+  background-color: black;
+}
+body div.album-14 div.tracksContainer table.album tbody.albumBody tr:nth-child(even):hover {
+  background-color: #194022;
+}
+body div.album-14 div.tracksContainer table.album tbody.albumBody tr td:first-child {
+  text-align: right;
+  vertical-align: middle;
+  font-weight: bold;
+  width: 10%;
+  white-space: nowrap;
+  padding-right: 0.1em;
+}
+body div.album-14 div.tracksContainer table.album tbody.albumBody tr td.track-title {
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+  padding-left: 0.1em;
+}
+body div.album-14 div.tracksContainer table.album tbody.albumBody tr td.track-length {
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 1em;
+  width: 10%;
+}
+body div.album-15 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+body div.album-15 div.coverContainer {
+  flex: 1;
+}
+body div.album-15 div.coverContainer img.album-cover-15 {
+  width: 100%;
+  height: auto;
+}
+body div.album-15 div.tracksContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  border: 0.5em solid #6d6c6c;
+  box-shadow: 1px 1px 20px #6d6c6c;
+}
+body div.album-15 div.tracksContainer div.flagContainer p {
+  text-align: center;
+  width: auto;
+  font-size: 20pt;
+}
+body div.album-15 div.tracksContainer table.album {
+  table-layout: auto;
+  font-size: 24pt;
+  width: 100%;
+  height: 100%;
+}
+body div.album-15 div.tracksContainer table.album tr.albumHeader {
+  font-size: 26pt;
+}
+body div.album-15 div.tracksContainer table.album tr.albumHeader th[colspan] {
+  text-align: center;
+  vertical-align: middle;
+  font-family: monospace;
+}
+body div.album-15 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd) {
+  background-color: #a09f9f;
+}
+body div.album-15 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd):hover {
+  background-color: #8e4b4b;
+}
+body div.album-15 div.tracksContainer table.album tbody.albumBody tr:nth-child(even) {
+  background-color: #3a3939;
+}
+body div.album-15 div.tracksContainer table.album tbody.albumBody tr:nth-child(even):hover {
+  background-color: #8e4b4b;
+}
+body div.album-15 div.tracksContainer table.album tbody.albumBody tr td:first-child {
+  text-align: right;
+  vertical-align: middle;
+  font-weight: bold;
+  width: 10%;
+  white-space: nowrap;
+  padding-right: 0.1em;
+}
+body div.album-15 div.tracksContainer table.album tbody.albumBody tr td.track-title {
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+  padding-left: 0.1em;
+}
+body div.album-15 div.tracksContainer table.album tbody.albumBody tr td.track-length {
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 1em;
+  width: 10%;
+}
+body div.album-16 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+body div.album-16 div.coverContainer {
+  flex: 1;
+}
+body div.album-16 div.coverContainer img.album-cover-16 {
+  width: 100%;
+  height: auto;
+}
+body div.album-16 div.tracksContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  border: 0.5em solid #525151;
+  box-shadow: 1px 1px 20px #525151;
+}
+body div.album-16 div.tracksContainer div.flagContainer p {
+  text-align: center;
+  width: auto;
+  font-size: 20pt;
+}
+body div.album-16 div.tracksContainer table.album {
+  table-layout: auto;
+  font-size: 24pt;
+  width: 100%;
+  height: 100%;
+}
+body div.album-16 div.tracksContainer table.album tr.albumHeader {
+  font-size: 26pt;
+}
+body div.album-16 div.tracksContainer table.album tr.albumHeader th[colspan] {
+  text-align: center;
+  vertical-align: middle;
+  font-family: monospace;
+}
+body div.album-16 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd) {
+  background-color: #858484;
+}
+body div.album-16 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd):hover {
+  background-color: #6a3939;
+}
+body div.album-16 div.tracksContainer table.album tbody.albumBody tr:nth-child(even) {
+  background-color: #1f1e1e;
+}
+body div.album-16 div.tracksContainer table.album tbody.albumBody tr:nth-child(even):hover {
+  background-color: #6a3939;
+}
+body div.album-16 div.tracksContainer table.album tbody.albumBody tr td:first-child {
+  text-align: right;
+  vertical-align: middle;
+  font-weight: bold;
+  width: 10%;
+  white-space: nowrap;
+  padding-right: 0.1em;
+}
+body div.album-16 div.tracksContainer table.album tbody.albumBody tr td.track-title {
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+  padding-left: 0.1em;
+}
+body div.album-16 div.tracksContainer table.album tbody.albumBody tr td.track-length {
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 1em;
+  width: 10%;
+}
+body div.album-17 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+body div.album-17 div.coverContainer {
+  flex: 1;
+}
+body div.album-17 div.coverContainer img.album-cover-17 {
+  width: 100%;
+  height: auto;
+}
+body div.album-17 div.tracksContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  border: 0.5em solid #215497;
+  box-shadow: 1px 1px 20px #215497;
+}
+body div.album-17 div.tracksContainer div.flagContainer p {
+  text-align: center;
+  width: auto;
+  font-size: 20pt;
+}
+body div.album-17 div.tracksContainer table.album {
+  table-layout: auto;
+  font-size: 24pt;
+  width: 100%;
+  height: 100%;
+}
+body div.album-17 div.tracksContainer table.album tr.albumHeader {
+  font-size: 26pt;
+}
+body div.album-17 div.tracksContainer table.album tr.albumHeader th[colspan] {
+  text-align: center;
+  vertical-align: middle;
+  font-family: monospace;
+}
+body div.album-17 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd) {
+  background-color: #4785d7;
+}
+body div.album-17 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd):hover {
+  background-color: #0550b3;
+}
+body div.album-17 div.tracksContainer table.album tbody.albumBody tr:nth-child(even) {
+  background-color: #0f2543;
+}
+body div.album-17 div.tracksContainer table.album tbody.albumBody tr:nth-child(even):hover {
+  background-color: #0550b3;
+}
+body div.album-17 div.tracksContainer table.album tbody.albumBody tr td:first-child {
+  text-align: right;
+  vertical-align: middle;
+  font-weight: bold;
+  width: 10%;
+  white-space: nowrap;
+  padding-right: 0.1em;
+}
+body div.album-17 div.tracksContainer table.album tbody.albumBody tr td.track-title {
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+  padding-left: 0.1em;
+}
+body div.album-17 div.tracksContainer table.album tbody.albumBody tr td.track-length {
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 1em;
+  width: 10%;
+}
+body div.album-18 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+body div.album-18 div.coverContainer {
+  flex: 1;
+}
+body div.album-18 div.coverContainer img.album-cover-18 {
+  width: 100%;
+  height: auto;
+}
+body div.album-18 div.tracksContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  border: 0.5em solid #e00000;
+  box-shadow: 1px 1px 20px #e00000;
+}
+body div.album-18 div.tracksContainer div.flagContainer p {
+  text-align: center;
+  width: auto;
+  font-size: 20pt;
+}
+body div.album-18 div.tracksContainer table.album {
+  table-layout: auto;
+  font-size: 24pt;
+  width: 100%;
+  height: 100%;
+}
+body div.album-18 div.tracksContainer table.album tr.albumHeader {
+  font-size: 26pt;
+}
+body div.album-18 div.tracksContainer table.album tr.albumHeader th[colspan] {
+  text-align: center;
+  vertical-align: middle;
+  font-family: monospace;
+}
+body div.album-18 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd) {
+  background-color: #ff4747;
+}
+body div.album-18 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd):hover {
+  background-color: #e00000;
+}
+body div.album-18 div.tracksContainer table.album tbody.albumBody tr:nth-child(even) {
+  background-color: #7a0000;
+}
+body div.album-18 div.tracksContainer table.album tbody.albumBody tr:nth-child(even):hover {
+  background-color: #e00000;
+}
+body div.album-18 div.tracksContainer table.album tbody.albumBody tr td:first-child {
+  text-align: right;
+  vertical-align: middle;
+  font-weight: bold;
+  width: 10%;
+  white-space: nowrap;
+  padding-right: 0.1em;
+}
+body div.album-18 div.tracksContainer table.album tbody.albumBody tr td.track-title {
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+  padding-left: 0.1em;
+}
+body div.album-18 div.tracksContainer table.album tbody.albumBody tr td.track-length {
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 1em;
+  width: 10%;
+}
+body div.album-19 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+body div.album-19 div.coverContainer {
+  flex: 1;
+}
+body div.album-19 div.coverContainer img.album-cover-19 {
+  width: 100%;
+  height: auto;
+}
+body div.album-19 div.tracksContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  border: 0.5em solid #b14101;
+  box-shadow: 1px 1px 20px #b14101;
+}
+body div.album-19 div.tracksContainer div.flagContainer p {
+  text-align: center;
+  width: auto;
+  font-size: 20pt;
+}
+body div.album-19 div.tracksContainer table.album {
+  table-layout: auto;
+  font-size: 24pt;
+  width: 100%;
+  height: 100%;
+}
+body div.album-19 div.tracksContainer table.album tr.albumHeader {
+  font-size: 26pt;
+}
+body div.album-19 div.tracksContainer table.album tr.albumHeader th[colspan] {
+  text-align: center;
+  vertical-align: middle;
+  font-family: monospace;
+}
+body div.album-19 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd) {
+  background-color: #fe6d1a;
+}
+body div.album-19 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd):hover {
+  background-color: #b24100;
+}
+body div.album-19 div.tracksContainer table.album tbody.albumBody tr:nth-child(even) {
+  background-color: #4c1c00;
+}
+body div.album-19 div.tracksContainer table.album tbody.albumBody tr:nth-child(even):hover {
+  background-color: #b24100;
+}
+body div.album-19 div.tracksContainer table.album tbody.albumBody tr td:first-child {
+  text-align: right;
+  vertical-align: middle;
+  font-weight: bold;
+  width: 10%;
+  white-space: nowrap;
+  padding-right: 0.1em;
+}
+body div.album-19 div.tracksContainer table.album tbody.albumBody tr td.track-title {
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+  padding-left: 0.1em;
+}
+body div.album-19 div.tracksContainer table.album tbody.albumBody tr td.track-length {
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 1em;
+  width: 10%;
+}
+body div.album-20 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+body div.album-20 div.coverContainer {
+  flex: 1;
+}
+body div.album-20 div.coverContainer img.album-cover-20 {
+  width: 100%;
+  height: auto;
+}
+body div.album-20 div.tracksContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  border: 0.5em solid #b14101;
+  box-shadow: 1px 1px 20px #b14101;
+}
+body div.album-20 div.tracksContainer div.flagContainer p {
+  text-align: center;
+  width: auto;
+  font-size: 20pt;
+}
+body div.album-20 div.tracksContainer table.album {
+  table-layout: auto;
+  font-size: 24pt;
+  width: 100%;
+  height: 100%;
+}
+body div.album-20 div.tracksContainer table.album tr.albumHeader {
+  font-size: 26pt;
+}
+body div.album-20 div.tracksContainer table.album tr.albumHeader th[colspan] {
+  text-align: center;
+  vertical-align: middle;
+  font-family: monospace;
+}
+body div.album-20 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd) {
+  background-color: #fe6d1a;
+}
+body div.album-20 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd):hover {
+  background-color: #b24100;
+}
+body div.album-20 div.tracksContainer table.album tbody.albumBody tr:nth-child(even) {
+  background-color: #4c1c00;
+}
+body div.album-20 div.tracksContainer table.album tbody.albumBody tr:nth-child(even):hover {
+  background-color: #b24100;
+}
+body div.album-20 div.tracksContainer table.album tbody.albumBody tr td:first-child {
+  text-align: right;
+  vertical-align: middle;
+  font-weight: bold;
+  width: 10%;
+  white-space: nowrap;
+  padding-right: 0.1em;
+}
+body div.album-20 div.tracksContainer table.album tbody.albumBody tr td.track-title {
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+  padding-left: 0.1em;
+}
+body div.album-20 div.tracksContainer table.album tbody.albumBody tr td.track-length {
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 1em;
+  width: 10%;
+}
+body div.album-21 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+body div.album-21 div.coverContainer {
+  flex: 1;
+}
+body div.album-21 div.coverContainer img.album-cover-21 {
+  width: 100%;
+  height: auto;
+}
+body div.album-21 div.tracksContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  border: 0.5em solid #b14101;
+  box-shadow: 1px 1px 20px #b14101;
+}
+body div.album-21 div.tracksContainer div.flagContainer p {
+  text-align: center;
+  width: auto;
+  font-size: 20pt;
+}
+body div.album-21 div.tracksContainer table.album {
+  table-layout: auto;
+  font-size: 24pt;
+  width: 100%;
+  height: 100%;
+}
+body div.album-21 div.tracksContainer table.album tr.albumHeader {
+  font-size: 26pt;
+}
+body div.album-21 div.tracksContainer table.album tr.albumHeader th[colspan] {
+  text-align: center;
+  vertical-align: middle;
+  font-family: monospace;
+}
+body div.album-21 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd) {
+  background-color: #fe6d1a;
+}
+body div.album-21 div.tracksContainer table.album tbody.albumBody tr:nth-child(odd):hover {
+  background-color: #b24100;
+}
+body div.album-21 div.tracksContainer table.album tbody.albumBody tr:nth-child(even) {
+  background-color: #4c1c00;
+}
+body div.album-21 div.tracksContainer table.album tbody.albumBody tr:nth-child(even):hover {
+  background-color: #b24100;
+}
+body div.album-21 div.tracksContainer table.album tbody.albumBody tr td:first-child {
+  text-align: right;
+  vertical-align: middle;
+  font-weight: bold;
+  width: 10%;
+  white-space: nowrap;
+  padding-right: 0.1em;
+}
+body div.album-21 div.tracksContainer table.album tbody.albumBody tr td.track-title {
+  text-align: left;
+  vertical-align: middle;
+  width: 80%;
+  padding-left: 0.1em;
+}
+body div.album-21 div.tracksContainer table.album tbody.albumBody tr td.track-length {
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 1em;
+  width: 10%;
+}
+
+/*# sourceMappingURL=discography.css.map */
