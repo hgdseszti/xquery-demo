@@ -1764,7 +1764,7 @@ let $labels := fn:distinct-values(for $labelInfo in array:join(for $release in $
 </labels>
 ```
 
-10. **Feladat:** Készítsünk HTML5 weboldalt King Diamond diszkográfiájának! A weboldal tartalmazza az egyes albumok albumborítóját, a zeneszámaik címét, hosszukat formázva MM:SS alakban. Az albumokhoz adjuk meg a kiadási országainak zászlaját is! Stilizáljuk a weboldalt! A válaszhoz használjuk fel a `restcountries.com` WebAPI és a `https://musicbrainz.org/doc/Cover_Art_Archive/API` WebAPI szolgáltatásokat!</br>
+10. **Feladat:** Készítsünk HTML5 weboldalt King Diamond diszkográfiájának! A weboldal tartalmazza az egyes albumok albumborítóját, a zeneszámaik címét, hosszukat. Az albumokhoz adjuk meg a kiadási országainak zászlaját is! Stilizáljuk a weboldalt! A válaszhoz használjuk fel a `restcountries.com` WebAPI és a `https://musicbrainz.org/doc/Cover_Art_Archive/API` WebAPI szolgáltatásokat!</br>
 Típus: **HTML5**
 ```xquery
 (:~
