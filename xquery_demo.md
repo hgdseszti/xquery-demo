@@ -1489,7 +1489,11 @@ return
 
 8. **Feladat:** Tekintve azokat az országokat, ahol a __*The Graveyard*__ című album eddig ki lett adva, készítsük el azt az XML dokumentumot, ami tartalmazza az összes európai országot csökkenő sorrendben az alapján, hogy az adott ország milyen messze van Magyarországtól! (Hanyadrendű szomszédja). Jelöljük meg azt az országo(ka)t egy `xs:boolean` típusú XML attribútummal, ahonnan a leggyorsabban juthatott el az album Magyarországra! A válaszhoz használjuk fel a `restcountries.com` WebAPI szolgáltatását!</br>
 
-Kapcsolódó [XML Séma](./xml/the_graveyard.xsd)
+Például:  
+* Ausztria-Magyarország távolsása: 0
+* Bulgária-Magyarország távolsága: 1  
+
+Kapcsolódó [XML Séma](./xml/the_graveyard.xsd)  
 
 Típus: **XML**
 ```xquery
@@ -1619,13 +1623,145 @@ let $releaseEuropeanCountries :=
 </europe>
 ```
 
-9. **Feladat:** Mely médiaformátumok preferáltak az egyes kiadóknál az európai piacon? Készítsük el azt az XML dokumentumot, ami erre a kérdésre választ ad! Az egyes kiadókhoz adjuk meg az általuk eddig használt formátumokat népszerűség szerint csökkenő sorrendben, továbbá a formátumokhoz, hogy hányszor lettek használva az adott kiadó által, illetve, hogy melyik az adott kiadó által elsőzör kiadott, albumnál kerültek először felhasználásra és mikor? </br>
+9. **Feladat:** Mely médiaformátumok preferáltak az egyes kiadóknál az európai piacon? Készítsük el azt az XML dokumentumot, ami erre a kérdésre választ ad! Az egyes kiadókhoz adjuk meg az általuk eddig használt formátumokat népszerűség szerint csökkenő sorrendben, továbbá a formátumokhoz, hogy hányszor lettek használva az adott kiadó által, illetve, hogy melyik az adott kiadó által először kiadott, albumnál kerültek először felhasználásra és mikor? A válaszhoz használjuk fel a `restcountries.com` WebAPI szolgáltatását!</br>
+
+Kapcsolódó [XML Séma](./xml/european_labels_formats.xsd)  
+
 Típus: **XML**
 ```xquery
+(:~
+: This query returns an XML document containing the names of all labels that have released in Europe.
+: The query also determines the media formats prefered by each label in Europe included where they're first used and when. 
+:
+: @author Racs Tamás
+:)
+
+xquery version "3.1";
+
+import module namespace kd-utilities = "http://kingdiamond.util" at "../utilities/init.xquery";
+declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
+declare namespace array = "http://www.w3.org/2005/xpath-functions/array";
+declare namespace validate = "http://basex.org/modules/validate";
+
+declare option output:method "xml";
+declare option output:indent "yes";
+
+(:~
+: Private function used for interfacing with restcountries.com. The function retrieves all European countries recorded in their database.
+: 
+: @return a JSON array of country objects
+:)
+declare %private function local:get-countries() as array(*)
+{
+   array {
+    for $country in fn:json-doc("https://restcountries.com/v3.1/region/europe")?*
+    where $country?independent = true()
+    return $country?cca2
+   }
+};
+
+declare variable $releases := kd-utilities:get-releases();
+declare variable $europeanCountryCodes := local:get-countries();
+
+let $labels := fn:distinct-values(for $labelInfo in array:join(for $release in $releases?* return $release?label-info)?* return $labelInfo?label?name),
+    $labelsWithMediaFormats := array {
+        for $label in $labels
+        return map {
+            "label" :$label,
+            "formats": array {
+                for $r in $releases?*
+                where $label = array{for $l in $r?label-info?* return $l?label?name}
+                    for $media in $r?media?*
+                    return map {
+                        "format" : $media?format
+                    }
+            }
+        }},
+    $mergedLabelsWithFormats := array {
+        for $label in $labelsWithMediaFormats?*
+            return map {
+                "label" : $label?label,
+                "formats" : array {
+                    for $f in $label?formats?*
+                    group by $formatName := $f?format
+                    let $c := count($f)
+                    order by $c descending
+                    return map {
+                        "format": $formatName,
+                        "used" : $c,
+                        "firstUsedAt": 
+                            array:get(array { for $release in $releases?*
+                                                where $f?format = array { for $m in $release?media?* return $m?format } 
+                                                    and $label?label = array { for $l in $release?label-info?* return $l?label?name } 
+                                                order by $release?date ascending
+                                                return map {
+                                                    "album" : $release?title,
+                                                    "releaseDate" : $release?date
+                                                }}, 1)
+                    }
+            }}
+            },
+    $resultDocument :=         
+        <labels>
+            {
+                for $info in $mergedLabelsWithFormats?*
+                return 
+                <label name="{$info?label}">
+                    {   
+                        for $format in $info?formats?*
+                        return
+                        <format name="{$format?format}" used="{$format?used}" firstAlbum="{$format?firstUsedAt?album}" firstUsage="{$format?firstUsedAt?releaseDate}"/>
+                    }
+                </label>
+            }
+        </labels>,
+   $validationMessage := validate:xsd-report($resultDocument, "european_labels_formats.xsd")
+   return
+   if (fn:contains($validationMessage, "invalid"))
+   then $validationMessage
+   else $resultDocument
 ```
 **Válasz kiemnet**
 ```xml
-
+<labels>
+  <label name="Roadrunner Records">
+    <format name="CD" used="33" firstAlbum="Fatal Portrait" firstUsage="1986"/>
+    <format name="12&quot; Vinyl" used="4" firstAlbum="Abigail" firstUsage="1987"/>
+    <format name="Vinyl" used="1" firstAlbum="Fatal Portrait" firstUsage="1986"/>
+  </label>
+  <label name="Massacre Records">
+    <format name="CD" used="15" firstAlbum="The Spider’s Lullabye" firstUsage="1995-05-29"/>
+    <format name="DVD-Video" used="1" firstAlbum="The Puppet Master" firstUsage="2003"/>
+  </label>
+  <label name="Metal Blade Records">
+    <format name="CD" used="23" firstAlbum="The Spider’s Lullabye" firstUsage="1995-06-15"/>
+    <format name="12&quot; Vinyl" used="8" firstAlbum="The Spider's Lullabye" firstUsage="2015"/>
+    <format name="Digital Media" used="4" firstAlbum="In Concert 1987: Abigail (Live)" firstUsage="2017-12-01"/>
+    <format name="DVD-Video" used="3" firstAlbum="The Puppet Master" firstUsage="2003-10-21"/>
+    <format name="Blu-ray" used="2" firstAlbum="Songs for the Dead: Live" firstUsage="2019-01-25"/>
+  </label>
+  <label name="Priority Records">
+    <format name="CD" used="3" firstAlbum="The Spider’s Lullabye" firstUsage="1995-06-15"/>
+  </label>
+  <label name="Far East Metal Syndicate">
+    <format name="CD" used="6" firstAlbum="Conspiracy" firstUsage="1989-10-05"/>
+  </label>
+  <label name="Roadracer Records">
+    <format name="CD" used="3" firstAlbum="Fatal Portrait" firstUsage="1986"/>
+  </label>
+  <label name="Mercury Records">
+    <format name="CD" used="1" firstAlbum="The Spider’s Lullabye" firstUsage="1995-08-25"/>
+  </label>
+  <label name="Фоно">
+    <format name="CD" used="1" firstAlbum="Abigail II: The Revenge" firstUsage="2002"/>
+  </label>
+  <label name="Metal Blade Records Inc.">
+    <format name="Digital Media" used="1" firstAlbum="Conspiracy" firstUsage="2017-12-01"/>
+  </label>
+  <label name="Metal Blade Records GmbH">
+    <format name="CD" used="1" firstAlbum="Voodoo" firstUsage="2015"/>
+  </label>
+</labels>
 ```
 
 10. **Feladat:** Készítsünk HTML5 weboldalt King Diamond diszkográfiájának! A weboldal tartalmazza az egyes albumok albumborítóját, a zeneszámaik címét, hosszukat formázva MM:SS alakban. Az albumokhoz adjuk meg a kiadási országainak zászlaját is! Stilizáljuk a weboldalt!</br>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="labels">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="label" type="labelType" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:complexType name="labelType">
+        <xs:sequence>
+            <xs:element name="format" type="formatType" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+    
+    <xs:complexType name="formatType">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="used" type="xs:unsignedInt" use="required"/>
+        <xs:attribute name="firstAlbum" type="xs:string" use="required"/>
+        <xs:attribute name="firstUsage" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="(\d{4})?|(\d{4}-\d{2}-\d{2})"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+</xs:schema>
