@@ -164,7 +164,7 @@ array:size($dates)
 8
 ```
 
-4. **Feladat:** Állítsuk elő azt a JSON dokumentumot, ami tartalmazza a kiadókat. A kiadókhoz adjuk meg a kiadott albumok címét, illetve kiadási dátumát. Rendezzük a kiadókon belül az albumokat kiadási dátumok szerint növekvő sorrendben!</br>
+4. **Feladat:** Állítsuk elő azt a JSON dokumentumot, ami tartalmazza a kiadókat. A kiadókhoz adjuk meg a kiadott albumok címét, illetve kiadási dátumukat. Rendezzük a kiadókon belül az albumokat kiadási dátumok szerint növekvő sorrendben!</br>
 Típus: **JSON**
 ```xquery
 (:~
@@ -658,7 +658,7 @@ map:entry("publishers", array:join(
 ```
 
 5. **Feladat:**  </br>
-Készítsük el azt a JSON dokumentumot, amit tartalmazza azt a 3 legnépszerűbb országot, ahol a legtöbb kiadás történt. Az országok mellé adjuk meg, hogy hány kiadással rendelkeznek, illetve melyik album a legnépszerűbb az adott országban és azt hányszor adták ki az adott országban!  
+Készítsük el azt a JSON dokumentumot, ami tartalmazza azt a 3 legnépszerűbb országot, ahol a legtöbb kiadás történt. Az országok mellé adjuk meg, hogy hány kiadással rendelkeznek, illetve melyik album a legnépszerűbb az adott országban és azt hányszor adták ki az adott országban!  
 Típus: **JSON**  
 ```xquery
 (:~
@@ -773,6 +773,8 @@ return $resultDocument
 ```
 
 6. **Feladat:** Készítsük el _King Diamond_ diszkográfiájának XML reprezentációját! A diszkográfia albumonként tartalmazza a címét, zenedarabjainak címét és játékidejét percben, illetve a kiadási évét. Ha egy albumnnak több kiadása is van, akkor a legelső kiadását tegyük a diszkográfiába! </br>
+
+Kapcsolódó [XML Séma](./xml/simple_discography.xsd)   
 Típus: **XML**
 ```xquery
 (:~
@@ -851,8 +853,6 @@ return
     else $resultDocument
 ```
 **Válasz kiemnet**
-
-Kapcsolódó [XML Séma](./xml/simple_discography.xsd)
 
 ```xml
 <discography>
@@ -1623,7 +1623,7 @@ let $releaseEuropeanCountries :=
 </europe>
 ```
 
-9. **Feladat:** Mely médiaformátumok preferáltak az egyes kiadóknál az európai piacon? Készítsük el azt az XML dokumentumot, ami erre a kérdésre választ ad! Az egyes kiadókhoz adjuk meg az általuk eddig használt formátumokat népszerűség szerint csökkenő sorrendben, továbbá a formátumokhoz, hogy hányszor lettek használva az adott kiadó által, illetve, hogy melyik az adott kiadó által először kiadott, albumnál kerültek először felhasználásra és mikor? A válaszhoz használjuk fel a `restcountries.com` WebAPI szolgáltatását!</br>
+9. **Feladat:** Mely médiaformátumok preferáltak az egyes kiadóknál az európai piacon? Készítsük el azt az XML dokumentumot, ami erre a kérdésre választ ad! Az egyes kiadókhoz adjuk meg az általuk eddig használt formátumokat népszerűség szerint csökkenő sorrendben, továbbá a formátumokhoz, hogy hányszor lettek használva az adott kiadó által, illetve, hogy melyik az adott kiadó által először kiadott albumnál kerültek először felhasználásra és mikor? A válaszhoz használjuk fel a `restcountries.com` WebAPI szolgáltatását!</br>
 
 Kapcsolódó [XML Séma](./xml/european_labels_formats.xsd)  
 
@@ -1843,13 +1843,14 @@ let $albumTitles := array {fn:distinct-values(for $r in $releases?* return fn:re
                     (for $r in $releases?*
                     where $r?cover-art-archive?front and fn:replace($r?title, '"+|“+|”+|’+|…+|–+', '') = $title and fn:exists($r?date)
                     order by $r?date
-                    return $r)[1]
-                    
+                    return $r)[1],
+            $rDate := local:get-first-release-date($title)
+        order by $rDate           
         return 
         if (fn:exists($firstInstance?id))
         then map {
             "title" : fn:replace($firstInstance?title, '"+|“+|”+|’+|…+|–+', ''),
-            "release-date": local:get-first-release-date($title),
+            "release-date": $rDate,
             "id": $firstInstance?id,
             "tracks": array:join(for $m in $firstInstance?media?* return $m?tracks)
         }
@@ -1869,13 +1870,17 @@ let $albumTitles := array {fn:distinct-values(for $r in $releases?* return fn:re
                         <div class="album-{$idx}">
                             <div class="coverContainer">
                                 <img src="{local:get-front-album-cover($album?id)}" alt="Cover Of {$album?title}" class="album-cover-{$idx}"/>
-                            </div>
+                            </div>                           
                             <div class="tracksContainer">
+                                 <div class="flagContainer">
+                                     <p>
+                                          {local:get-release-country-flags($album?title)} 
+                                     </p>
+                                 </div>
                                 <table class="album">
                                     <thead>
                                         <tr class="albumHeader">
-                                            <th colspan="2">{$album?title} {($album?release-date)}</th>
-                                            <th>{local:get-release-country-flags($album?title)}</th>
+                                            <th colspan="3">{fn:concat($album?title, ' (', $album?release-date, ')')}</th>
                                         </tr>
                                     </thead>
                                     <tbody class="albumBody">
@@ -1900,7 +1905,10 @@ let $albumTitles := array {fn:distinct-values(for $r in $releases?* return fn:re
     </html>}
    return $resultDocument
 ```
-**Válasz kiemnet**
-```html5
+**Képernyőmentések**  
+Desktop:  
+![FullScreen](./html5/screenshots/2.PNG)
 
-```
+
+"Mobile":  
+![MobileLol](./html5/screenshots/1.PNG)
