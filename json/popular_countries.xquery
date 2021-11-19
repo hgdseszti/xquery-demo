@@ -6,7 +6,8 @@
 
 xquery version "3.1";
 
-import module namespace kd-utilities = "http://kingdiamond.util" at "../utilities/init.xquery";declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
+import module namespace kd-utilities = "http://kingdiamond.util" at "../utilities/init.xquery";
+declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 
 declare namespace array = "http://www.w3.org/2005/xpath-functions/array";
 declare namespace map = "http://www.w3.org/2005/xpath-functions/map";
